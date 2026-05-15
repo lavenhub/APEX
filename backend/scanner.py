@@ -3,7 +3,6 @@ import json
 import base64
 import re
 from io import BytesIO
-from PIL import Image
 from dotenv import load_dotenv
 from duckduckgo_search import DDGS
 
@@ -19,7 +18,7 @@ if GEMINI_API_KEY and GEMINI_API_KEY != "your_gemini_api_key_here":
     try:
         import google.generativeai as genai
         genai.configure(api_key=GEMINI_API_KEY)
-        _model = genai.GenerativeModel('gemini-2.5-flash')
+        _model = genai.GenerativeModel('gemini-flash-latest')
         AI_ENABLED = True
         print("[AI] Gemini AI scanner: ACTIVE (google-generativeai)")
     except Exception as e:
@@ -63,21 +62,6 @@ All numeric fields must be integers or floats. Return valid JSON only.
 """
 
 
-def preprocess_image(image_bytes: bytes) -> Image.Image:
-    """Resize image to under 1MB for API efficiency."""
-    img = Image.open(BytesIO(image_bytes))
-    # Convert to RGB if needed (e.g., PNG with alpha)
-    if img.mode in ("RGBA", "P"):
-        img = img.convert("RGB")
-    # Resize if too large
-    max_dim = 1024
-    if max(img.size) > max_dim:
-        ratio = max_dim / max(img.size)
-        new_size = (int(img.width * ratio), int(img.height * ratio))
-        img = img.resize(new_size, Image.LANCZOS)
-    return img
-
-
 async def scan_vehicle_image(image_bytes: bytes) -> dict:
     """
     Send image to Gemini Vision and parse the vehicle telemetry response.
@@ -87,17 +71,10 @@ async def scan_vehicle_image(image_bytes: bytes) -> dict:
         return _mock_scan_result()
 
     try:
-        img = preprocess_image(image_bytes)
-
-        # Convert PIL image to bytes for Gemini
-        buf = BytesIO()
-        img.save(buf, format="JPEG", quality=90)
-        img_bytes = buf.getvalue()
-
-        # Call Gemini using google-generativeai syntax
+        # Pass raw bytes directly to Gemini — no Pillow needed
         response = _model.generate_content([
             SCAN_PROMPT,
-            {"mime_type": "image/jpeg", "data": img_bytes}
+            {"mime_type": "image/jpeg", "data": image_bytes}
         ])
 
         raw_text = response.text.strip()
