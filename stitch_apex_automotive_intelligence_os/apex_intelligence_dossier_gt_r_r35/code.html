@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow-secondary:hover {
+            text-shadow: 0 0 8px rgba(255, 229, 177, 0.6);
+        }
+        .scan-line-active {
+            background: linear-gradient(to bottom, transparent 50%, rgba(255, 180, 171, 0.1) 50%);
+            background-size: 100% 4px;
+        }
+        .notch-tl::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 20px;
+            height: 1px;
+            background: #ffb4ab;
+        }
+        .notch-tl::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 1px;
+            height: 20px;
+            background: #ffb4ab;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0c0f0f; }
+        ::-webkit-scrollbar-thumb { background: #5e3f3b; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474746",
+                        "surface-dim": "#121414",
+                        "on-primary-container": "#5c0004",
+                        "on-primary-fixed": "#410002",
+                        "on-secondary-container": "#6d5200",
+                        "background": "#121414",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-container": "#ff5449",
+                        "surface": "#121414",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#333535",
+                        "on-surface": "#e2e2e2",
+                        "outline-variant": "#5e3f3b",
+                        "inverse-surface": "#e2e2e2",
+                        "secondary": "#ffe5b1",
+                        "primary": "#ffb4ab",
+                        "on-secondary": "#3f2e00",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-container-high": "#282a2b",
+                        "secondary-fixed": "#ffdf99",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0f0f",
+                        "on-primary": "#690005",
+                        "surface-container-low": "#1a1c1c",
+                        "on-surface-variant": "#e8bcb7",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "on-secondary-fixed": "#251a00",
+                        "surface-variant": "#333535",
+                        "on-error": "#690005",
+                        "tertiary": "#c8c6c5",
+                        "on-tertiary": "#303030",
+                        "primary-fixed": "#ffdad6",
+                        "surface-tint": "#ffb4ab",
+                        "on-tertiary-container": "#2a2a2a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "inverse-on-surface": "#2f3131",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "inverse-primary": "#c00011",
+                        "on-background": "#e2e2e2",
+                        "surface-container": "#1e2020",
+                        "surface-bright": "#38393a",
+                        "tertiary-container": "#929090",
+                        "on-primary-fixed-variant": "#93000a",
+                        "secondary-container": "#fec300",
+                        "secondary-fixed-dim": "#f7be00",
+                        "outline": "#af8783"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "body-lg": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "subheading": ["Space Grotesk"],
+                        "caption": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "label-mono": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "subheading": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-64 h-20 bg-background/80 backdrop-blur-md dark:bg-background/80 border-b border-outline-variant/30">
+<div class="font-headline-xl text-headline-xl font-bold text-primary dark:text-primary tracking-tighter">APEX</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Scan</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Discover</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Compare</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Garage</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Brands</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary hover:scale-110 transition-transform">search</button>
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-primary" href="#">About</a>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Split Screen -->
+<section class="relative min-h-[921px] grid grid-cols-1 lg:grid-cols-2 border-b border-outline-variant">
+<!-- Left: 3D Viewer Placeholder -->
+<div class="relative bg-surface-container-lowest flex items-center justify-center overflow-hidden border-r border-outline-variant">
+<div class="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-transparent z-10"></div>
+<img class="w-full h-full object-cover scale-110 transition-transform duration-700 hover:scale-100" data-alt="A high-performance gunmetal gray Nissan GT-R R35 parked in a dark, atmospheric studio. Dramatic spotlighting catches the sharp aerodynamic lines and metallic reflections of the car body. The environment is minimalist with deep black shadows and subtle gray textures, reflecting a cinematic and engineering-focused aesthetic. The mood is aggressive and premium, focusing on the vehicle's legendary status." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8h8m-TFT0A0F6TASci5ZWzRcxXcN8yGr0GI6vxbFQ--VGxR-QjZMANUb2kBYU68S8InIPLKNO_lABmxPZ3XM2o_yOnEa8DXOimZV0Ib9KUk0uMX8TYlEy0IIoNjwhvuJ2g3bnPVr9-5c4KenVv4lbvEux0IgUuZmzgl_OE2twFAJg3PjNNIvQI4KipRwqqEwtU6IJGJ6mwJ7J-gG8MyzPQwdthWsWQib3P8hV-Nc5wXDLOHfSIkoVQ8YRhu76sM4nKQZB_HFoy18"/>
+<!-- HUD Overlays -->
+<div class="absolute top-8 left-8 z-20 flex flex-col gap-2">
+<div class="flex items-center gap-2 px-3 py-1 bg-primary text-on-primary font-label-mono text-label-mono uppercase">
+<span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                        Live Telemetry
+                    </div>
+<div class="text-outline-variant font-label-mono text-label-mono">COORD: 35.6895° N, 139.6917° E</div>
+</div>
+<div class="absolute bottom-8 right-8 z-20">
+<div class="flex flex-col items-end gap-2">
+<div class="w-48 h-1 bg-outline-variant/30 overflow-hidden">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant">ROTATION_AXIS_X: ACTIVE</div>
+</div>
+</div>
+</div>
+<!-- Right: Details -->
+<div class="p-16 lg:p-24 flex flex-col justify-center bg-surface-dim relative">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-5 pointer-events-none">
+<div class="grid grid-cols-10 h-full w-full">
+<div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div><div class="border-r border-outline"></div>
+</div>
+</div>
+<div class="relative z-10">
+<span class="font-label-mono text-label-mono text-secondary uppercase tracking-[0.3em] mb-4 block">Experimental Unit // 001</span>
+<h1 class="font-display-lg text-display-lg text-on-surface uppercase mb-2">NISSAN GT-R R35</h1>
+<h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-widest mb-12">The Modern Godzilla</h2>
+<p class="text-on-surface-variant font-body-lg max-w-xl mb-12 border-l-2 border-primary pl-6 py-2">
+                        A masterclass in engineering violence. The R35 redefined the limits of physics, blending all-wheel-drive precision with a twin-turbocharged heart that beat with technical perfection.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-8 py-4 uppercase tracking-widest hover:brightness-110 transition-all active:scale-95">
+                            START ENGINE
+                        </button>
+<button class="border border-outline-variant text-primary font-label-mono text-label-mono px-8 py-4 uppercase tracking-widest hover:border-primary transition-all active:scale-95">
+                            REV ENGINE
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Telemetry Specs Bento -->
+<section class="px-64 py-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter bg-surface">
+<div class="relative p-8 bg-surface-container-low border border-outline-variant notch-tl overflow-hidden group">
+<div class="font-label-mono text-label-mono text-outline-variant mb-2">001_OUTPUT</div>
+<div class="font-display-lg text-[48px] text-primary group-hover:scale-110 transition-transform">565</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase mt-1">Horsepower [BHP]</div>
+</div>
+<div class="relative p-8 bg-surface-container-low border border-outline-variant notch-tl overflow-hidden group">
+<div class="font-label-mono text-label-mono text-outline-variant mb-2">002_VELOCITY</div>
+<div class="font-display-lg text-[48px] text-secondary group-hover:scale-110 transition-transform">315</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase mt-1">Top Speed [KM/H]</div>
+</div>
+<div class="relative p-8 bg-surface-container-low border border-outline-variant notch-tl overflow-hidden group">
+<div class="font-label-mono text-label-mono text-outline-variant mb-2">003_ACCEL</div>
+<div class="font-display-lg text-[48px] text-on-surface group-hover:scale-110 transition-transform">2.7</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase mt-1">0-100 [SECONDS]</div>
+</div>
+<div class="relative p-8 bg-surface-container-low border border-outline-variant notch-tl overflow-hidden group">
+<div class="font-label-mono text-label-mono text-outline-variant mb-2">004_FORCE</div>
+<div class="font-display-lg text-[48px] text-on-surface group-hover:scale-110 transition-transform">633</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant uppercase mt-1">Torque [NM]</div>
+</div>
+</section>
+<!-- AI Story Section -->
+<section class="px-64 py-32 bg-surface-container-lowest grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="order-2 lg:order-1">
+<div class="font-label-mono text-label-mono text-primary uppercase mb-6 flex items-center gap-3">
+<span class="w-10 h-[1px] bg-primary"></span>
+                    Intelligence Briefing
+                </div>
+<h3 class="font-headline-xl text-headline-xl text-on-surface mb-8">THE GENESIS OF A TITAN</h3>
+<div class="space-y-6 text-on-surface-variant font-body-lg">
+<p>When the R35 debuted, it didn't just compete with supercars—it dismantled the hierarchy. Conceived in the wind tunnels of Tochigi, the GT-R was designed as a "Total Performance Machine" for anyone, anywhere, anytime.</p>
+<p>It utilized a unique independent rear transaxle 4WD system, providing unprecedented traction. Every VR38DETT engine was hand-built by a Takumi master technician in a dust-free clean room, a level of precision typically reserved for aerospace engineering.</p>
+</div>
+<div class="mt-12">
+<button class="flex items-center gap-4 text-secondary font-label-mono text-label-mono uppercase tracking-[0.2em] group">
+                        Access Full Dossier
+                        <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="order-1 lg:order-2 relative aspect-video bg-surface-container border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close up detail shot of the VR38DETT engine block of a Nissan GT-R. The lighting is cold and clinical, highlighting the complex plumbing, twin turbochargers, and the signature 'Takumi' nameplate. The style is industrial and ultra-detailed, emphasizing the machine's complexity and raw power in a dark workshop setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD30wNhrjMZv8Qa48e_V4nZ3AW5USjzjF4m9nVqetk8kgy9zEtORkP3SMObSGEbo2pV7hNIrgAkf1AQE9oti78NgtQvPiKHajyyPf5z6rdIRlZ7jlYGnjEops-a_RjRioego9IWzs0g7jlmZLNuD63GfY3dQ_xU2JIEvba58wd18tDUAgYk1pQod-_g_KdbxaUWKs2WfKTFrHO7_HN51EaUZFmAg9r_p6L93NuwlBuN3RJcAdog5c55QmqsryaRQBVE_ijSifW2XX4"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+</section>
+<!-- DNA Analysis & Performance -->
+<section class="px-64 py-32 bg-surface">
+<div class="mb-16">
+<h3 class="font-headline-lg text-headline-lg text-on-surface uppercase mb-2">DNA Analysis</h3>
+<p class="font-label-mono text-label-mono text-outline-variant">TELEMETRY_CROSS_DATA_V2.0</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<div class="space-y-12">
+<!-- Stat Bar -->
+<div class="space-y-3">
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface uppercase">
+<span>Track Aggression</span>
+<span class="text-primary">98%</span>
+</div>
+<div class="h-2 bg-surface-container-highest border border-outline-variant/30 flex p-[1px]">
+<div class="h-full bg-primary w-[98%] shadow-[0_0_10px_rgba(255,180,171,0.5)]"></div>
+</div>
+</div>
+<!-- Stat Bar -->
+<div class="space-y-3">
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface uppercase">
+<span>Aerodynamic Efficiency</span>
+<span class="text-primary">92%</span>
+</div>
+<div class="h-2 bg-surface-container-highest border border-outline-variant/30 flex p-[1px]">
+<div class="h-full bg-primary w-[92%] shadow-[0_0_10px_rgba(255,180,171,0.5)]"></div>
+</div>
+</div>
+<!-- Stat Bar -->
+<div class="space-y-3">
+<div class="flex justify-between font-label-mono text-label-mono text-on-surface uppercase">
+<span>Technical Complexity</span>
+<span class="text-primary">95%</span>
+</div>
+<div class="h-2 bg-surface-container-highest border border-outline-variant/30 flex p-[1px]">
+<div class="h-full bg-primary w-[95%] shadow-[0_0_10px_rgba(255,180,171,0.5)]"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-6 bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">precision_manufacturing</span>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface uppercase mb-1">Drivetrain</div>
+<div class="font-headline-lg text-headline-lg-mobile text-on-surface-variant">ATTESA E-TS</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">settings_input_component</span>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface uppercase mb-1">Transmission</div>
+<div class="font-headline-lg text-headline-lg-mobile text-on-surface-variant">6-SPEED DCT</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">memory</span>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface uppercase mb-1">Control Unit</div>
+<div class="font-headline-lg text-headline-lg-mobile text-on-surface-variant">GR6-30</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low border border-outline-variant flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary text-3xl">monitor_weight</span>
+<div>
+<div class="font-label-mono text-label-mono text-on-surface uppercase mb-1">Weight</div>
+<div class="font-headline-lg text-headline-lg-mobile text-on-surface-variant">1,752 KG</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- History Timeline -->
+<section class="py-32 bg-surface-container-lowest overflow-hidden">
+<div class="px-64 mb-16">
+<h3 class="font-headline-lg text-headline-lg text-on-surface uppercase">Legend Evolution</h3>
+<p class="font-label-mono text-label-mono text-outline-variant">A CHRONICLE OF DOMINANCE</p>
+</div>
+<div class="relative">
+<div class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant z-0"></div>
+<div class="flex px-64 gap-32 relative z-10 overflow-x-auto pb-8 no-scrollbar">
+<div class="min-w-[300px]">
+<div class="font-display-lg text-[48px] text-primary mb-4">1969</div>
+<div class="w-4 h-4 bg-primary rotate-45 mb-8 -translate-y-2"></div>
+<h4 class="font-label-mono text-label-mono text-on-surface uppercase mb-2">PGC10 "Hakosuka"</h4>
+<p class="text-on-surface-variant text-sm">The first Skyline GT-R. A high-revving straight-six derived from the Prince R380 race car.</p>
+</div>
+<div class="min-w-[300px]">
+<div class="font-display-lg text-[48px] text-on-surface-variant mb-4">1989</div>
+<div class="w-4 h-4 bg-outline rotate-45 mb-8 -translate-y-2"></div>
+<h4 class="font-label-mono text-label-mono text-on-surface uppercase mb-2">R32 "Godzilla"</h4>
+<p class="text-on-surface-variant text-sm">Born for Group A racing. The car that destroyed the competition and earned its legendary nickname.</p>
+</div>
+<div class="min-w-[300px]">
+<div class="font-display-lg text-[48px] text-on-surface-variant mb-4">1999</div>
+<div class="w-4 h-4 bg-outline rotate-45 mb-8 -translate-y-2"></div>
+<h4 class="font-label-mono text-label-mono text-on-surface uppercase mb-2">R34 V-Spec II</h4>
+<p class="text-on-surface-variant text-sm">Technical peak of the Skyline name. The digital interface designed by Polyphony Digital.</p>
+</div>
+<div class="min-w-[300px]">
+<div class="font-display-lg text-[48px] text-secondary mb-4">2007</div>
+<div class="w-4 h-4 bg-secondary rotate-45 mb-8 -translate-y-2"></div>
+<h4 class="font-label-mono text-label-mono text-on-surface uppercase mb-2">R35 Launch</h4>
+<p class="text-on-surface-variant text-sm">A clean-sheet design that moved the engine to the front and the gearbox to the rear.</p>
+</div>
+<div class="min-w-[300px]">
+<div class="font-display-lg text-[48px] text-on-surface-variant mb-4">2017</div>
+<div class="w-4 h-4 bg-outline rotate-45 mb-8 -translate-y-2"></div>
+<h4 class="font-label-mono text-label-mono text-on-surface uppercase mb-2">Track Edition</h4>
+<p class="text-on-surface-variant text-sm">Refinement of the formula with improved cooling and Nismo-tuned suspension systems.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-64 py-32 bg-primary flex flex-col items-center text-center">
+<h2 class="font-display-lg text-display-lg text-on-primary uppercase mb-8">OWN THE ARCHIVE</h2>
+<p class="font-body-lg text-on-primary-container max-w-2xl mb-12">
+                Download the complete engineering dossier for the R35 platform, including telemetry charts, Nürburgring lap data, and component schematics.
+            </p>
+<button class="bg-on-primary text-primary px-12 py-6 font-label-mono text-label-mono uppercase tracking-[0.3em] flex items-center gap-4 hover:scale-105 transition-transform active:scale-95">
+                DOWNLOAD FULL DOSSIER
+                <span class="material-symbols-outlined">download</span>
+</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-32 px-64 flex flex-col md:flex-row justify-between items-center border-t border-outline-variant bg-surface-dim">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="font-headline-lg text-headline-lg text-on-surface tracking-tighter">APEX INTELLIGENCE</div>
+<div class="font-label-mono text-label-mono text-secondary uppercase tracking-widest">© 2024 APEX INTELLIGENCE. SYSTEM STATUS: NOMINAL.</div>
+</div>
+<div class="flex gap-12 mt-12 md:mt-0">
+<div class="flex flex-col gap-2">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary uppercase" href="#">Telemetry Protocol</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary uppercase" href="#">Privacy</a>
+</div>
+<div class="flex flex-col gap-2">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary uppercase" href="#">Security</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-secondary uppercase" href="#">API Resources</a>
+</div>
+</div>
+</footer>
+</body></html>

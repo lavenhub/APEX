@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow-secondary:hover {
+            text-shadow: 0 0 8px rgba(255, 229, 177, 0.6);
+        }
+        .notch-accent::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 20px;
+            height: 1px;
+            background-color: #ffb4ab;
+        }
+        .notch-accent::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 1px;
+            height: 20px;
+            background-color: #ffb4ab;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#474746",
+                        "surface-dim": "#121414",
+                        "on-primary-container": "#5c0004",
+                        "on-primary-fixed": "#410002",
+                        "on-secondary-container": "#6d5200",
+                        "background": "#121414",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-container": "#ff5449",
+                        "surface": "#121414",
+                        "error": "#ffb4ab",
+                        "surface-container-highest": "#333535",
+                        "on-surface": "#e2e2e2",
+                        "outline-variant": "#5e3f3b",
+                        "inverse-surface": "#e2e2e2",
+                        "secondary": "#ffe5b1",
+                        "primary": "#ffb4ab",
+                        "on-secondary": "#3f2e00",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "surface-container-high": "#282a2b",
+                        "secondary-fixed": "#ffdf99",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0c0f0f",
+                        "on-primary": "#690005",
+                        "surface-container-low": "#1a1c1c",
+                        "on-surface-variant": "#e8bcb7",
+                        "primary-fixed-dim": "#ffb4ab",
+                        "on-secondary-fixed": "#251a00",
+                        "surface-variant": "#333535",
+                        "on-error": "#690005",
+                        "tertiary": "#c8c6c5",
+                        "on-tertiary": "#303030",
+                        "primary-fixed": "#ffdad6",
+                        "surface-tint": "#ffb4ab",
+                        "on-tertiary-container": "#2a2a2a",
+                        "tertiary-fixed": "#e4e2e1",
+                        "inverse-on-surface": "#2f3131",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "inverse-primary": "#c00011",
+                        "on-background": "#e2e2e2",
+                        "surface-container": "#1e2020",
+                        "surface-bright": "#38393a",
+                        "tertiary-container": "#929090",
+                        "on-primary-fixed-variant": "#93000a",
+                        "secondary-container": "#fec300",
+                        "secondary-fixed-dim": "#f7be00",
+                        "outline": "#af8783"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Space Grotesk"],
+                        "body-lg": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "subheading": ["Space Grotesk"],
+                        "caption": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "label-mono": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "subheading": ["18px", {"lineHeight": "1.4", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "0em", "fontWeight": "600"}],
+                        "label-mono": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 bg-background/80 backdrop-blur-md dark:bg-background/80 border-b border-outline-variant/30">
+<div class="flex items-center gap-stack-md">
+<span class="font-headline-xl text-headline-xl font-bold text-primary dark:text-primary tracking-tighter">APEX</span>
+</div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Scan</a>
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-primary font-bold border-b-2 border-primary pb-1" href="#">Discover</a>
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Compare</a>
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Garage</a>
+<a class="font-headline-lg text-headline-lg uppercase tracking-widest text-on-surface-variant font-medium hover:text-primary transition-colors duration-300" href="#">Brands</a>
+</nav>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-primary" data-icon="search">search</button>
+<button class="bg-primary text-on-primary px-6 py-2 font-label-mono uppercase tracking-widest text-label-mono transition-transform duration-150 active:scale-95">About</button>
+</div>
+</header>
+<main class="pt-24 pb-stack-lg">
+<!-- Hero Section -->
+<section class="relative h-[614px] px-margin-desktop mb-stack-lg">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center opacity-40 mix-blend-luminosity" data-alt="A cinematic high-contrast photograph of a sleek carbon fiber aerodynamic wing of a racing car in a dark studio. The scene is illuminated by sharp red laser-like lighting from the side, highlighting the textured weave of the material. The background is a deep matte black, creating a sense of precision engineering and high-performance mystery. The overall aesthetic is aggressive and futuristic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBbbgmo4KD2qUukVsoxRfP33-wL_f0Bh5-OELA2_A7vtpovxdtV7u9lX4fzM-bOw7QP1gF4GQjvqVeQNLP4eamxADza99HWo2m6Tn7tADCTWnxsk7vlKtUJfKF9GlNWYGcRYu2Upe1-fCasadrJ2352Z02RG8qwa1OFd4MDmZXtMurmVzgkr6pZYSVHLwegGtO6guDqJL7NM7aqtvLqcaUkI_YkMBkUhRDHwX6bfGzUSNk7pcjex3P1wYpQe7KSrq4QHxTPDFgmcuo')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 h-full flex flex-col justify-end pb-stack-lg max-w-container-max mx-auto">
+<div class="flex items-center gap-stack-sm mb-stack-sm">
+<span class="h-px w-12 bg-primary"></span>
+<span class="font-label-mono text-label-mono uppercase text-primary">Intelligence Hub</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface max-w-2xl mb-stack-md">DISCOVER THE PINNACLE.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Navigate through curated automotive hierarchies. From track-born monsters to the silent revolution of electrons.
+                </p>
+</div>
+</section>
+<!-- Category Grid (Bento Style) -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-stack-lg">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Hypercars - Large Hero Card -->
+<div class="md:col-span-8 group relative aspect-[16/9] overflow-hidden bg-surface-container border border-outline-variant/30 notch-accent">
+<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A professional studio photograph of a legendary hypercar profile in a low-light environment. The vehicle's aerodynamic curves are highlighted by a single overhead spotlight, casting dramatic shadows. The color palette is dominated by deep blacks and cool grays, with a faint red glow reflecting off the ceramic brakes. The mood is powerful and exclusive, reflecting peak automotive engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMfsd6TGPGjmDTns0egynqpeQ0c-gc0A5EvI4pA8v0K1TblT0EkG1HiajDIG9DpXYgSv-zJNwSzJvrIsmFlE0UJ1wuLmzmVqk6VqOQxOgH3nFMXwxSovUd4yF3bs70-XKOtpLTtE9Zfst4GlbHAc5YRiYhLnNA0BfEmD4a40xIYcBR0WN8rMJ9ERObmOHIE0SrHhL3ztRpKXzbQss4HRyGsYEYYXXI3uj6ZF0Wujd3NT9Er6U5g1GHpKLT7oYQ0p1KqDUbpXIulBw"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg">
+<span class="font-label-mono text-label-mono text-primary mb-stack-sm block">01 / PERFORMANCE</span>
+<h3 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm">HYPERCARS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-stack-md">Pushing the boundaries of physics and exclusivity. Where engineering meets art.</p>
+<a class="inline-flex items-center gap-stack-sm text-primary font-label-mono text-label-mono uppercase group-hover:translate-x-2 transition-transform" href="#">Explore Models <span class="material-symbols-outlined">arrow_forward</span></a>
+</div>
+</div>
+<!-- Formula 1 - Vertical Card -->
+<div class="md:col-span-4 group relative overflow-hidden bg-surface-container border border-outline-variant/30 notch-accent">
+<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-50" data-alt="Close-up of a high-tech Formula 1 steering wheel featuring numerous illuminated buttons, dials, and a digital telemetry display. The lighting is dark and cinematic, with neon red and gold accents from the LED indicators. The surrounding cockpit is constructed from raw carbon fiber, emphasizing the technical and competitive nature of the motorsport. The atmosphere is intense and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfL8lWhdg0ZNur4Q4qOktriOzdKYI2DJIUpqxzDtSXVpKsDv4Vl3BZdMqiXQYWhzMN3jMVF7WnFzmgSwsnZZFJEt3zz8LDqtY22z91ezRjvLoedDXEHM_X9qwdNp05ddUQ2rIR80edn6TnKyjU1kpJxwzwDYLDSkW0LiY_yLOEUmRHo_O7mRTdJbZrhm4UfF1ImyjCv1EnPu_3llBdHAJQ25g5eUOP4u96ireFGte-bIWZKAH-VBVN3_LFzNGJULyvjEs8NZs9Oqw"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg">
+<span class="font-label-mono text-label-mono text-secondary mb-stack-sm block">02 / TELEMETRY</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">FORMULA 1</h3>
+<a class="inline-flex items-center gap-stack-sm text-primary font-label-mono text-label-mono uppercase" href="#">Race Specs <span class="material-symbols-outlined">analytics</span></a>
+</div>
+</div>
+<!-- JDM - Horizontal Card -->
+<div class="md:col-span-4 group relative aspect-square overflow-hidden bg-surface-container border border-outline-variant/30 notch-accent">
+<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-60" data-alt="A modified Japanese sports car parked under neon lights in a rain-slicked Tokyo street at night. The lighting creates vibrant red and gold reflections on the car's body and the wet pavement. The overall style is atmospheric and urban, with a focus on street performance and tuner culture. The scene feels alive with technical detail and cinematic grit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARjfDN3gjX1CBvO6v0xFHJl647YwBGiBG9Z73Lkqd5bh-sM2pNnGrc4YWobcOXNdijxnptvtJustYG1XcD6BA8IVRGKuDIceMofh0mG7RaCZyY6iOU6uOZ00QFiu9LJr3l6IUibEDdtsDamJhB6tiYKAdzVkXOJUM_L9pd_m-8C5GjjOWwUPHX_KH9x-k4ZbwtT_bkeKWwAxuqh_yhhcKv8KupBzfgGCnmdInaDLNSbpffwbe9nCDgPNaQ3sZew0O-PKZ8f02eHUU"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg">
+<span class="font-label-mono text-label-mono text-on-surface-variant mb-stack-sm block">03 / CULTURE</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">JDM ICONS</h3>
+<a class="inline-flex items-center gap-stack-sm text-primary font-label-mono text-label-mono uppercase" href="#">Tuner Logs <span class="material-symbols-outlined">settings_input_component</span></a>
+</div>
+</div>
+<!-- EVs - Wide Vertical Card -->
+<div class="md:col-span-4 group relative aspect-square overflow-hidden bg-surface-container border border-outline-variant/30 notch-accent">
+<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover mix-blend-screen opacity-40" data-alt="A minimalist, futuristic electric vehicle charging port illuminated by a glowing blue and white ring light. The surrounding car body is a sleek, matte dark gray. The image emphasizes clean lines, silent power, and advanced technology. The composition is clinical and sophisticated, using a low-key lighting scheme with sharp, precise highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHoh8pgp9lEccN5iEvqtEHJJtC-87HiDbK7F-n1TTWm4ivgyWFmxHzzt8J1UB7fzBksbQ0ZfU3uXGbdvkv3OddKsVJR3Ib67fMPtv9otF7TdYBjJ1Cdj2KMKfs5boumb0hwSS9RxBcSeduKVcxjFeOoKol-rSvSI3v5iGRgwrJMNNxWZgHifYo8CGdO4K2Z9AMXXxzX0B467_RjCqZUsne_q6s5qrjsAfggMwzXDE-4RsHHq0oXXFvLWmEcEiv_OtXOr2bhMf54Zs"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg">
+<span class="font-label-mono text-label-mono text-primary mb-stack-sm block">04 / KINETIC</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">ELECTRIC EVOLUTION</h3>
+<a class="inline-flex items-center gap-stack-sm text-primary font-label-mono text-label-mono uppercase" href="#">Voltage Stats <span class="material-symbols-outlined">bolt</span></a>
+</div>
+</div>
+<!-- Classics - Tall Card -->
+<div class="md:col-span-4 group relative aspect-square overflow-hidden bg-surface-container border border-outline-variant/30 notch-accent">
+<div class="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+<img class="w-full h-full object-cover mix-blend-overlay opacity-50" data-alt="A vintage 1960s sports car dashboard featuring analog chrome-rimmed gauges and a wood-rimmed steering wheel. The scene is shot with a shallow depth of field, focusing on the needle of the speedometer. The lighting is warm and evocative, like a sunset filtering through a garage window. The mood is nostalgic yet emphasizes the timeless precision of mechanical engineering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRZWJTXitQWj8Y7oQ-YeuDGWFX3Ue14N59hFpvflSiSwlyInxk54geoYoTK_GclRc_j61V6WR-DGgmhXAx3xC5uWwmZF6blyO8rGCWD5NtwXK5UYjf34OxJy_3Ca52bfYe8133UMwp7X9ZNtGrQRv1ktMGVSEhxC4n1PRANUTQWRuV1v58upuiHT9yvCzCw4j_DncaQ7_bdah6HOlabYyEsMkncq58ESDVz30FREFVVerVmV_9Q5dTMp6S-RYTkOg9L9Y7QHn696U"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-stack-lg">
+<span class="font-label-mono text-label-mono text-secondary mb-stack-sm block">05 / HERITAGE</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-stack-sm">CLASSIC PRECISION</h3>
+<a class="inline-flex items-center gap-stack-sm text-primary font-label-mono text-label-mono uppercase" href="#">Archives <span class="material-symbols-outlined">history_edu</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Telemetry Section (Aggressive Intelligence) -->
+<section class="px-margin-desktop max-w-container-max mx-auto py-stack-lg border-t border-outline-variant/30">
+<div class="flex flex-col md:flex-row justify-between items-end gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight">LIVE FEED: GLOBAL FLEET</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span> SYSTEM STATUS: REAL-TIME DATA ACTIVE
+                    </p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="w-12 h-12 flex items-center justify-center border border-outline-variant/50 hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface">chevron_left</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center border border-outline-variant/50 hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Data Widget 1 -->
+<div class="bg-surface-container-low border border-outline-variant/20 p-stack-md relative">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase tracking-widest">Aero-Load / Front</span>
+<span class="material-symbols-outlined text-primary text-[16px]">speed</span>
+</div>
+<div class="text-[32px] font-bold text-on-surface mb-1">842 <span class="text-label-mono text-on-surface-variant font-normal">kgf</span></div>
+<div class="w-full h-1 bg-outline-variant/20 overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+</div>
+<!-- Data Widget 2 -->
+<div class="bg-surface-container-low border border-outline-variant/20 p-stack-md relative">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase tracking-widest">Torque / Vector</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">hub</span>
+</div>
+<div class="text-[32px] font-bold text-on-surface mb-1">1,240 <span class="text-label-mono text-on-surface-variant font-normal">Nm</span></div>
+<div class="w-full h-1 bg-outline-variant/20 overflow-hidden">
+<div class="h-full bg-secondary w-[92%]"></div>
+</div>
+</div>
+<!-- Data Widget 3 -->
+<div class="bg-surface-container-low border border-outline-variant/20 p-stack-md relative">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase tracking-widest">Battery / Thermal</span>
+<span class="material-symbols-outlined text-primary text-[16px]">thermostat</span>
+</div>
+<div class="text-[32px] font-bold text-on-surface mb-1">42.8 <span class="text-label-mono text-on-surface-variant font-normal">°C</span></div>
+<div class="w-full h-1 bg-outline-variant/20 overflow-hidden">
+<div class="h-full bg-primary w-[40%]"></div>
+</div>
+</div>
+<!-- Data Widget 4 -->
+<div class="bg-surface-container-low border border-outline-variant/20 p-stack-md relative">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-label-mono text-caption text-on-surface-variant uppercase tracking-widest">Lateral / G-Force</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">navigation</span>
+</div>
+<div class="text-[32px] font-bold text-on-surface mb-1">1.84 <span class="text-label-mono text-on-surface-variant font-normal">G</span></div>
+<div class="w-full h-1 bg-outline-variant/20 overflow-hidden">
+<div class="h-full bg-secondary w-[60%]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-margin-desktop flex flex-col md:flex-row justify-between items-center border-t border-outline-variant bg-surface-dim dark:bg-surface-dim">
+<div class="mb-stack-md md:mb-0">
+<span class="font-headline-lg text-headline-lg text-on-surface">APEX</span>
+</div>
+<div class="flex flex-col md:flex-row gap-stack-md items-center">
+<nav class="flex gap-stack-md mb-stack-sm md:mb-0">
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-secondary transition-colors text-glow-secondary" href="#">Telemetry Protocol</a>
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-secondary transition-colors text-glow-secondary" href="#">Privacy</a>
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-secondary transition-colors text-glow-secondary" href="#">Security</a>
+<a class="font-label-mono text-label-mono uppercase text-on-surface-variant hover:text-secondary transition-colors text-glow-secondary" href="#">API Resources</a>
+</nav>
+<span class="font-label-mono text-label-mono uppercase text-secondary">© 2024 APEX INTELLIGENCE. SYSTEM STATUS: NOMINAL.</span>
+</div>
+</footer>
+</body></html>

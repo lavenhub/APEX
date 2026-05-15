@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>APEX | Automotive Intelligence OS</title>
+<meta name="description" content="Next-generation automotive intelligence. Decode the DNA of motion with cinematic precision."/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "background": "#121414","surface": "#121414","surface-dim": "#121414",
+        "surface-bright": "#38393a","surface-container-lowest": "#0c0f0f",
+        "surface-container-low": "#1a1c1c","surface-container": "#1e2020",
+        "surface-container-high": "#282a2b","surface-container-highest": "#333535",
+        "on-surface": "#e2e2e2","on-surface-variant": "#e8bcb7",
+        "outline": "#af8783","outline-variant": "#5e3f3b",
+        "primary": "#ffb4ab","on-primary": "#690005","primary-container": "#ff5449",
+        "on-primary-container": "#5c0004","inverse-primary": "#c00011",
+        "secondary": "#ffe5b1","on-secondary": "#3f2e00","secondary-container": "#fec300",
+        "tertiary": "#c8c6c5","on-tertiary": "#303030",
+        "error": "#ffb4ab","on-error": "#690005","error-container": "#93000a",
+        "surface-variant": "#333535","surface-tint": "#ffb4ab",
+      },
+      fontFamily: { "space": ["Space Grotesk", "sans-serif"] },
+      spacing: {
+        "margin-desktop": "64px","margin-mobile": "16px",
+        "gutter": "24px","stack-sm": "8px","stack-md": "16px","stack-lg": "32px",
+        "container-max": "1440px",
+      },
+    },
+  },
+}
+</script>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="bg-background text-on-surface font-space overflow-x-hidden">
+
+<!-- CANVAS: particle background -->
+<canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-30"></canvas>
+
+<!-- TOP NAV -->
+<nav id="topNav" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 lg:px-16 h-20 border-b border-outline-variant/30 transition-all duration-500" style="background:rgba(18,20,20,0.85);backdrop-filter:blur(16px)">
+  <div class="text-3xl font-bold text-primary tracking-tighter cursor-pointer" onclick="navigate('home')">APEX</div>
+  <div class="hidden md:flex items-center gap-6 lg:gap-8">
+    <a class="nav-link text-sm uppercase tracking-widest font-medium transition-colors duration-300 cursor-pointer" data-page="home" onclick="navigate('home')">Home</a>
+    <a class="nav-link text-sm uppercase tracking-widest font-medium transition-colors duration-300 cursor-pointer" data-page="scan" onclick="navigate('scan')">Scan</a>
+    <a class="nav-link text-sm uppercase tracking-widest font-medium transition-colors duration-300 cursor-pointer" data-page="discover" onclick="navigate('discover')">Discover</a>
+    <a class="nav-link text-sm uppercase tracking-widest font-medium transition-colors duration-300 cursor-pointer" data-page="brands" onclick="navigate('brands')">Brands</a>
+    <a class="nav-link text-sm uppercase tracking-widest font-medium transition-colors duration-300 cursor-pointer" data-page="about" onclick="navigate('about')">About</a>
+  </div>
+  <div class="flex items-center gap-4">
+    <div class="hidden lg:flex items-center bg-surface-container border border-outline-variant px-4 py-2 gap-2">
+      <span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+      <input type="text" placeholder="SYSTEM_SEARCH" class="bg-transparent border-none focus:outline-none text-xs uppercase placeholder-outline-variant text-on-surface w-28 tracking-widest" onkeyup="ApexAPI.searchBar(this)"/>
+    </div>
+    <!-- Mobile menu btn -->
+    <button class="md:hidden text-on-surface" onclick="toggleMobileMenu()">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="fixed top-20 left-0 w-full bg-surface-container-lowest border-b border-outline-variant z-40 hidden flex-col p-6 gap-4">
+  <a class="text-sm uppercase tracking-widest text-on-surface-variant cursor-pointer" onclick="navigate('home');toggleMobileMenu()">Home</a>
+  <a class="text-sm uppercase tracking-widest text-on-surface-variant cursor-pointer" onclick="navigate('scan');toggleMobileMenu()">Scan</a>
+  <a class="text-sm uppercase tracking-widest text-on-surface-variant cursor-pointer" onclick="navigate('discover');toggleMobileMenu()">Discover</a>
+  <a class="text-sm uppercase tracking-widest text-on-surface-variant cursor-pointer" onclick="navigate('dossier');toggleMobileMenu()">Compare</a>
+</div>
+
+<!-- PAGE CONTAINER -->
+<div id="pageContainer">
+  <div id="page-home" class="page"></div>
+  <div id="page-scan" class="page hidden"></div>
+  <div id="page-discover" class="page hidden"></div>
+  <div id="page-dossier" class="page hidden"></div>
+  <div id="page-browse" class="page hidden"></div>
+  <div id="page-brands" class="page hidden"></div>
+  <div id="page-about" class="page hidden"></div>
+</div>
+
+<!-- PAGE TRANSITION OVERLAY -->
+<div id="transitionOverlay" class="fixed inset-0 bg-background z-[999] pointer-events-none opacity-0 transition-opacity duration-300"></div>
+
+<script src="api.js"></script>
+<script src="router.js"></script>
+<script src="particles.js"></script>
+<script src="pages/home.js"></script>
+<script src="pages/scan.js"></script>
+<script src="pages/discover.js"></script>
+<script src="pages/dossier.js"></script>
+<script src="pages/browse.js"></script>
+<script src="pages/brands.js"></script>
+<script src="pages/about.js"></script>
+<script>
+  // Boot — render all pages then navigate home
+  window.addEventListener('DOMContentLoaded', async () => {
+    initParticles();
+    renderHome();
+    renderScan();
+    renderDiscover();
+    renderDossier();
+    if (typeof renderBrowse === 'function') renderBrowse();
+    if (typeof renderBrands === 'function') renderBrands();
+    if (typeof renderAbout === 'function') renderAbout();
+    navigate('home');
+
+    // Load live stats from API (non-blocking)
+    ApexAPI.getStats().then(stats => {
+      const el = (id) => document.getElementById(id);
+      
+      if (el('stat-velocity')) {
+        el('stat-velocity').dataset.count = stats.peak_velocity_kmh || 342;
+      }
+      if (el('stat-latency')) {
+        el('stat-latency').dataset.count = stats.system_latency_ms || 0.04;
+      }
+      if (el('stat-sensors')) {
+        el('stat-sensors').dataset.count = stats.active_sensors || 400;
+      }
+      if (el('stat-neural')) {
+        el('stat-neural').dataset.count = stats.neural_core_pct || 98;
+      }
+      
+      // Re-trigger counter animation for home page
+      const homePage = document.getElementById('page-home');
+      if (homePage && !homePage.classList.contains('hidden')) {
+        animateCounters(homePage);
+      }
+    }).catch(err => console.error("Failed to fetch stats", err));
+  });
+</script>
+</body>
+</html>

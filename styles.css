@@ -1,0 +1,249 @@
+/* ========== APEX Design System ========== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #ffb4ab;
+  --primary-dark: #c00011;
+  --secondary: #ffe5b1;
+  --background: #121414;
+  --surface: #121414;
+  --surface-low: #1a1c1c;
+  --surface-container: #1e2020;
+  --surface-high: #282a2b;
+  --surface-highest: #333535;
+  --on-surface: #e2e2e2;
+  --on-surface-variant: #e8bcb7;
+  --outline: #af8783;
+  --outline-variant: #5e3f3b;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Space Grotesk', sans-serif; background: var(--background); color: var(--on-surface); overflow-x: hidden; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0c0f0f; }
+::-webkit-scrollbar-thumb { background: var(--outline-variant); }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ===== Page Transitions ===== */
+.page { animation: pageFadeIn 0.5s ease forwards; }
+@keyframes pageFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== Nav Links ===== */
+.nav-link { color: var(--on-surface-variant); }
+.nav-link:hover, .nav-link.active { color: var(--primary); }
+.nav-link.active { border-bottom: 2px solid var(--primary); padding-bottom: 2px; }
+
+/* ===== Notch Accents ===== */
+.notch-tl { position: relative; }
+.notch-tl::before {
+  content: ''; position: absolute; top: -1px; left: -1px;
+  width: 20px; height: 1px; background: var(--primary);
+}
+.notch-tl::after {
+  content: ''; position: absolute; top: -1px; left: -1px;
+  width: 1px; height: 20px; background: var(--primary);
+}
+
+.notch-accent { position: relative; }
+.notch-accent::before {
+  content: ''; position: absolute; top: -1px; left: -1px;
+  width: 20px; height: 1px; background: #2B2B2B;
+}
+.notch-accent::after {
+  content: ''; position: absolute; top: -1px; left: -1px;
+  width: 1px; height: 20px; background: #2B2B2B;
+}
+
+/* ===== Telemetry Grid ===== */
+.telemetry-grid {
+  background-image: linear-gradient(rgba(43,43,43,0.4) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(43,43,43,0.4) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ===== Scan Line Texture ===== */
+.scan-line-texture {
+  background: repeating-linear-gradient(0deg, transparent, transparent 1px,
+    rgba(43,43,43,0.12) 1px, rgba(43,43,43,0.12) 2px);
+}
+
+/* ===== Spotlight ===== */
+.spotlight {
+  background: radial-gradient(ellipse at center, rgba(255,180,171,0.07) 0%, transparent 70%);
+}
+
+/* ===== Glow Effects ===== */
+.glow-primary { box-shadow: 0 0 20px rgba(255,180,171,0.25); }
+.glow-secondary { box-shadow: 0 0 20px rgba(255,229,177,0.25); }
+.text-glow { text-shadow: 0 0 20px rgba(255,180,171,0.5); }
+.text-glow-secondary { text-shadow: 0 0 15px rgba(255,229,177,0.4); }
+
+/* ===== Animations ===== */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { display: flex; width: fit-content; animation: marquee 20s linear infinite; }
+
+@keyframes scanDown {
+  0% { top: -100px; }
+  100% { top: 110%; }
+}
+.scan-beam {
+  background: linear-gradient(to bottom, transparent, rgba(255,180,171,0.5), transparent);
+  height: 80px; width: 100%; position: absolute; left: 0;
+  animation: scanDown 3s ease-in-out infinite;
+}
+
+@keyframes radarSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.radar-sweep { animation: radarSpin 4s linear infinite; }
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+.pulse-ring::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 50%; border: 2px solid var(--primary);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes countUp { from { opacity: 0; } to { opacity: 1; } }
+
+.anim-left { animation: slideInLeft 0.7s ease forwards; }
+.anim-right { animation: slideInRight 0.7s ease forwards; }
+.anim-up { animation: slideInUp 0.6s ease forwards; }
+.anim-delay-1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+.anim-delay-2 { animation-delay: 0.25s; opacity: 0; animation-fill-mode: forwards; }
+.anim-delay-3 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+.anim-delay-4 { animation-delay: 0.55s; opacity: 0; animation-fill-mode: forwards; }
+.anim-delay-5 { animation-delay: 0.7s; opacity: 0; animation-fill-mode: forwards; }
+
+/* ===== Stat Bar Animation ===== */
+.stat-bar { width: 0%; transition: width 1.5s cubic-bezier(0.22,1,0.36,1); }
+
+/* ===== Corner Notch for Scanner ===== */
+.corner-notch { position: relative; }
+.corner-notch::before {
+  content: ''; position: absolute; top: -1px; left: -1px;
+  width: 24px; height: 24px;
+  border-top: 2px solid var(--primary); border-left: 2px solid var(--primary);
+}
+.corner-notch::after {
+  content: ''; position: absolute; bottom: -1px; right: -1px;
+  width: 24px; height: 24px;
+  border-bottom: 2px solid var(--primary); border-right: 2px solid var(--primary);
+}
+
+/* ===== Card hover ===== */
+.card-hover { transition: border-color 0.3s, transform 0.3s; }
+.card-hover:hover { border-color: rgba(255,180,171,0.5); transform: translateY(-2px); }
+
+/* ===== Timeline scroll ===== */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ===== HUD element ===== */
+.hud-label {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--primary);
+}
+
+/* ===== Bento grid images ===== */
+.bento-img { transition: transform 1.5s cubic-bezier(0.22,1,0.36,1); }
+.bento-img:hover { transform: scale(1.05); }
+
+/* ===== Primary button ===== */
+.btn-primary {
+  background: #c00011; color: #fff;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+  padding: 14px 32px; border: none; cursor: pointer;
+  transition: filter 0.2s, transform 0.15s;
+}
+.btn-primary:hover { filter: brightness(1.15); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-ghost {
+  background: transparent; color: var(--primary);
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+  padding: 14px 32px; border: 1px solid var(--outline-variant); cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+}
+.btn-ghost:hover { border-color: var(--primary); color: #fff; }
+
+/* ===== Live dot ===== */
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--primary); display: inline-block;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ===== Scan progress bar ===== */
+@keyframes scanProgress {
+  0% { width: 5%; }
+  50% { width: 80%; }
+  100% { width: 5%; }
+}
+.scan-progress { animation: scanProgress 4s ease-in-out infinite; }
+
+/* ===== Drop zone ===== */
+.drop-zone {
+  border: 2px dashed var(--outline-variant);
+  transition: border-color 0.3s, background 0.3s;
+}
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: var(--primary); background: rgba(255,180,171,0.04);
+}
+
+/* ===== Typewriter ===== */
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor { animation: blink 1s step-end infinite; }
+
+/* ===== Extra Scan Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; backdrop-filter: blur(0); }
+  to { opacity: 1; backdrop-filter: blur(8px); }
+}
+.anim-fade-in { animation: fadeIn 0.4s ease forwards; }
+
+@keyframes scanReveal {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.anim-scan-reveal { animation: scanReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+/* Pulse animation for the Launch button */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 180, 171, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(255, 180, 171, 0.5); }
+}
+.btn-launch-glow { animation: glowPulse 2s infinite; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .px-desktop { padding-left: 16px; padding-right: 16px; }
+}
