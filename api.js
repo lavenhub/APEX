@@ -5,7 +5,7 @@
 
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
   ? 'http://localhost:8000' 
-  : 'https://your-backend-name.onrender.com'; // REPLACE THIS with your Render URL after deployment
+  : 'https://apex-sm98.onrender.com'; 
 
 const WS_BASE = API_BASE.replace('http', 'ws');
 
