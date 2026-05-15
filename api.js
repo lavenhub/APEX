@@ -5,7 +5,7 @@
 
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
   ? 'http://localhost:8000' 
-  : 'https://apex-sm98.onrender.com'; 
+  : 'https://apex-j36n.onrender.com'; 
 
 const WS_BASE = API_BASE.replace('http', 'ws');
 
